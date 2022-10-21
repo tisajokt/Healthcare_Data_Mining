@@ -1,4 +1,6 @@
 #!/bin/python3
+# Author: Timothy Walker <james.and.tisa@gmail.com>
+# Usage: python3 main.py
 
 import numpy as np
 #import tkinter as tk
