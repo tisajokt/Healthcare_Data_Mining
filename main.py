@@ -3,7 +3,6 @@
 # Usage: python3 main.py
 
 import numpy as np
-#import tkinter as tk
 from random import shuffle
 from sklearn.svm import SVC
 from sklearn import metrics
@@ -45,18 +44,14 @@ def train_and_test(samples, training_size, kernel="rbf"):
 def f1_score(recall: float, precision: float) -> float:
 	return 2 * (recall * precision) / max(1, recall + precision)
 
-def _make_stats_display(data: list[float]) -> str:
+def _make_stats_display(data: list[float], format: str="6.1%") -> str:
 	data = np.sort(data)
-	return f"{data[int(len(data)/2)]:<6.1%} [{data[int(len(data)*0.05)]:>6.1%} ~ {data[int(len(data)*0.95)]:<6.1%}]"
+	return f"{data[int(len(data)/2)]:<{format}} [{data[int(len(data)*0.05)]:>{format}} ~ {data[int(len(data)*0.95)]:<{format}}]"
 
 def model_summary(trials, samples, training_size, pos_weight=10, kernel="rbf", advanced=False) -> dict:
 	pass
 
 def main():
-	#root = tk.Tk()
-	#root.title("This is a title!")
-	#root.mainloop()
-
 	labels, valid_samples, invalid_samples = process_csv(DATASET_FILENAME, VALID_VALUES, ",")
 	print(f"{len(valid_samples)} valid samples loaded ({len(invalid_samples)} invalidated)")
 	model, report, _ = train_and_test(valid_samples, 2000)
